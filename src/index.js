@@ -1,8 +1,12 @@
 // import React from "react";
-import React from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App";
-// import "./index.css";
+import App from "./App";
+import "./index.css";
+// import data from "./data.json";
+
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(<App />);
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
@@ -29,28 +33,28 @@ import ReactDOM from "react-dom/client";
 
 // =============================================
 
-const root = document.getElementById("root");
+// const content = (
+//   <p id="987" className="style">
+//     Hello world
+//   </p>
+// );
 
-const content = (
-  <p id="987" className="style">
-    Hello world
-  </p>
-);
-
-const div2 = (
-  <div id="789" className="style">
-    {content}
-  </div>
-);
+// const div2 = (
+//   <div id="789" className="style">
+//     {content}
+//   </div>
+// );
 // =====Component-Function==========
-const Div3 = () => {
-  return (
-    <div id="654" className="style">
-      {content}
-      <img src="qwerty" alt="qwe"></img>
-    </div>
-  );
-};
+// const Div3 = (props) => {
+//   console.log(props);
+//   // console.log(age);
+//   return (
+//     <div id="654" className="style">
+//       {content}
+//       <img src="qwerty" alt="qwe"></img>
+//     </div>
+//   );
+// };
 // =====REACT FRAGMENT============
 // const div4 = (
 //   <React.Fragment>
@@ -68,12 +72,26 @@ const Div3 = () => {
 
 // =======Function===============
 
-const Container = () => (
-  <>
-    {div2}
-    <Div3 />
-    <p>Galaxy</p>
-    <img src="qwe" alt="zxc"></img>
-  </>
-);
-ReactDOM.createRoot(root).render(<Container />);
+// const Container = () => (
+//   <>
+//     {div2}
+//     <Div3 name="Alex" age={30} />
+//     <p>Galaxy</p>
+//     <img src="qwe" alt="zxc"></img>
+//   </>
+// );
+// ReactDOM.createRoot(root).render(<Container />);
+
+// ===========COMPONENT===============
+
+// const Card = () => {
+//   return data.map((el) => (
+//     <div className="container" key={el.id}>
+//       <h1>{el.title}</h1>
+//       <h5>{el.body}</h5>
+//       <p>Price</p>
+//     </div>
+//   ));
+// };
+
+// ReactDOM.createRoot(root).render(<Card />);
