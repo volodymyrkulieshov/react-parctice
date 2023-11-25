@@ -3,7 +3,7 @@ import css from "./Card.module.css";
 import clsx from "clsx";
 
 const Card = ({ children }) => {
-  console.log("children :>> ", children);
+  // console.log("children :>> ", children);
 
   // const styles = `${css.container} ${el.id % 2 === 0 ? "online" : "offline"}`;
   return data.map((el) => (
