@@ -1,0 +1,43 @@
+.container {
+  display: block;
+  justify-content: center;
+  width: 450px;
+  height: auto;
+  background-color: paleturquoise;
+  border-radius: 10px;
+}
+.wrap {
+  display: block;
+  text-align: center;
+}
+.title {
+  font-size: 32px;
+  color: teal;
+}
+.counter {
+  font-size: 64px;
+  color: teal;
+}
+.buttonBox {
+  display: flex;
+  justify-content: space-between;
+}
+.increment {
+  background-color: aquamarine;
+  cursor: pointer;
+
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  font-size: 32px;
+  color: rgb(34, 144, 4);
+}
+.decrement {
+  background-color: aquamarine;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  font-size: 32px;
+  color: red;
+}
