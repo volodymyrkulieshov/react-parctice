@@ -5,7 +5,7 @@ const Header = () => {
     <nav className={css.nav}>
       <div className={css.navContainer}>
         <span className={css.navText}>Navbar</span>
-        <button className={css.button}></button>
+        <button className={css.button}>Modal</button>
       </div>
     </nav>
   );
