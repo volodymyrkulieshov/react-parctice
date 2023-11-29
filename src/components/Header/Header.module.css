@@ -9,7 +9,7 @@
   font-size: 32px;
   color: white;
 }
-.button {
+/* .button {
   background-color: turquoise;
   cursor: pointer;
   border-radius: 8px;
@@ -17,28 +17,37 @@
   height: fit-content;
   font-size: 32px;
   color: white;
-}
+} */
 
-/* .button {
-  background-color: rgba(51, 51, 51, 0.05);
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
+/* CSS */
+.button {
+  background-color: teal;
+  border-radius: 12px;
+  color: white;
   cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 10px 12px;
+  font-weight: bold;
+  padding: 10px 15px;
   text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
+  transition: 200ms;
+  width: 150px;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-} */
+}
+
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
+  outline: 0;
+  background: #f4e603;
+  color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.button:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
