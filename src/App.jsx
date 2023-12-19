@@ -16,8 +16,49 @@ import { nanoid } from "nanoid";
 class App extends Component {
   state = {
     isShowModal: false,
-    todo: data,
+    todo: null,
+    isDeleted: false,
+    isCreated: false,
   };
+
+  //==============Життєвий цикл===============
+
+  // componentDidMount = () => {
+  //   const localData = localStorage.getItem("todo");
+  //   if (localData) {
+  //     this.setState({ todo: JSON.parse(localData) });
+  //   }
+  // };
+
+  componentDidMount() {
+    const localData = localStorage.getItem("todo");
+    if (localData && JSON.parse(localData).length > 0) {
+      this.setState({ todo: JSON.parse(localData) });
+    } else {
+      this.setState({ todo: data });
+    }
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.todo?.length !== this.state.todo.length) {
+      localStorage.setItem("todo", JSON.stringify(this.state.todo));
+    }
+
+    if (prevState.todo?.length > this.state.todo.length) {
+      this.setState({ isDeleted: true });
+      setTimeout(() => {
+        this.setState({ isDeleted: false });
+      }, 1500);
+    }
+
+    if (prevState.todo?.length < this.state.todo.length) {
+      this.setState({ isCreated: true });
+      setTimeout(() => {
+        this.setState({ isCreated: false });
+      }, 1500);
+    }
+  };
+
   // ==========MODAL WINDOW================
   // showModal = () => {
   //   this.setState({
@@ -65,16 +106,22 @@ class App extends Component {
   };
 
   updateTodo = (id) => {
-    this.setState((prevState) => ({
-      todo: prevState.todo.map((elem) => {
-        if (elem.id === id) return { ...elem, completed: !elem.completed };
-        else return elem;
+    this.setState(
+      (prevState) => ({
+        todo: prevState.todo.map((elem) => {
+          if (elem.id === id) return { ...elem, completed: !elem.completed };
+          else return elem;
+        }),
       }),
-    }));
+      () => localStorage.setItem("todo", JSON.stringify(this.state.todo))
+    );
   };
   render() {
+    const { todo, isShowModal, isDeleted, isCreated } = this.state;
     return (
       <>
+        {isDeleted && <div>Deleted</div>}
+        {isCreated && <div>Created</div>}
         {/* ===============Module 1============= */}
         {/* <Container>
         <Card />
@@ -83,7 +130,7 @@ class App extends Component {
       <Card2 /> */}
         {/* =============Module 2(Modal and counter)========= */}
         <Header showModal={this.toggleModal} />
-        {this.state.isShowModal && (
+        {isShowModal && (
           <Modal hideModal={this.toggleModal}>Modal window</Modal>
         )}
         {/* <Counter /> */}
@@ -91,11 +138,13 @@ class App extends Component {
         {/* <FormCreate sendUserData={this.sendUserData} /> */}
         {/* ===========Module 2 (Todo Form)================ */}
         <CreateTodo createTodo={this.createTodo} />
-        <TodoList
-          todo={this.state.todo}
-          deleteTodo={this.deleteTodo}
-          updateTodo={this.updateTodo}
-        />
+        {todo && (
+          <TodoList
+            todo={todo}
+            deleteTodo={this.deleteTodo}
+            updateTodo={this.updateTodo}
+          />
+        )}
       </>
     );
   }
