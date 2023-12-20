@@ -13,6 +13,7 @@ import data from "./dataTodo.json";
 import CreateTodo from "./components/Forms/CreateTodo";
 import TodoList from "./components/TodoList/TodoList";
 import { nanoid } from "nanoid";
+import ProductList from "./components/ProductsList/ProductsList";
 class App extends Component {
   state = {
     isShowModal: false,
@@ -130,6 +131,8 @@ class App extends Component {
       <Card2 /> */}
         {/* =============Module 2(Modal and counter)========= */}
         <Header showModal={this.toggleModal} />
+
+        <ProductList />
         {isShowModal && (
           <Modal hideModal={this.toggleModal}>Modal window</Modal>
         )}
