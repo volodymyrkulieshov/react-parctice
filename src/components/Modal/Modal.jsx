@@ -1,24 +1,29 @@
-import { Component } from "react";
+import { useEffect } from "react";
 import css from "./Modal.module.css";
 
-class Modal extends Component {
-  handleEsc = (evt) => {
-    if (evt.code === "Escape") {
-      this.props.hideModal();
-      console.log("Press");
-    }
-  };
+const Modal = ({ children, hideModal }) => {
+  useEffect(() => {
+    const handleEsc = (evt) => {
+      if (evt.code === "Escape") {
+        hideModal();
+        console.log("Press");
+      }
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      console.log("UNMOUNT");
+    };
+  }, [hideModal]);
 
-  componentDidMount = () => {
-    document.addEventListener("keydown", this.handleEsc);
-  };
-  componentWillUnmount = () => {
-    document.removeEventListener("keydown", this.handleEsc);
-  };
-
-  render() {
-    const { children, hideModal } = this.props;
-    return (
+  // componentDidMount = () => {
+  //   document.addEventListener("keydown", this.handleEsc);
+  // };
+  // componentWillUnmount = () => {
+  //   document.removeEventListener("keydown", this.handleEsc);
+  // };
+  return (
+    <div>
       <div className={css.modal}>
         <article className={css.modalContainer}>
           <header className={css.modalContainerHeader}>
@@ -67,8 +72,8 @@ class Modal extends Component {
           </footer>
         </article>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Modal;

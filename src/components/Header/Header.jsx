@@ -10,12 +10,12 @@ class Header extends PureComponent {
   // };
 
   render() {
-    console.log("render header ");
+    // console.log("render header ");
     const { showModal } = this.props;
     return (
       <nav className={css.nav}>
         <div className={css.navContainer}>
-          <span className={css.navText}>Navbar</span>
+          <span className={css.navText}>Header</span>
           <button className={css.button} onClick={showModal}>
             Modal
           </button>
