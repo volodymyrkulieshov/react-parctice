@@ -53,7 +53,7 @@ const App = () => {
 
   const updateTodo = (id) => {
     setTodo((prevState) =>
-      prevState.todo.map((elem) =>
+      prevState.map((elem) =>
         elem.id === id ? { ...elem, completed: !elem.completed } : elem
       )
     );
