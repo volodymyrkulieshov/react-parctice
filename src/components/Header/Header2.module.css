@@ -2,7 +2,7 @@
   width: auto;
   height: fit-content;
   display: flex;
-  background-color: teal;
+  background-color: purple;
   justify-content: space-between;
 }
 .navText {
